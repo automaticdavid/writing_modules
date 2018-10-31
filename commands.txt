@@ -1,0 +1,32 @@
+# Setup
+git clone https://github.com/ansible/ansible.git
+cd ansible/
+virtualenv test
+source test/bin/activate
+pip install -r requirements.txt 
+
+# Dev
+mkdir lib/ansible/modules/cloud/hello
+vi lib/ansible/modules/cloud/hello/hello.sh
+
+# Module Test
+source hacking/env-setup
+hacking/test-module -m ./lib/ansible/modules/cloud/hello/hello.sh  -a 'msg=foo bar'
+hacking/test-module -m ./lib/ansible/modules/cloud/hello/hello.sh  
+
+# Playbook Test
+vi hello.yml
+ansible-playbook -vv hello.yml 
+
+# Use 
+cd ..
+mkdir roles
+cd roles
+ansible-galaxy init hello
+mkdir hello/library
+cd ..
+cp ansible/lib/ansible/modules/cloud/hello/hello.sh roles/hello/library/
+vi praha.yml
+ansible-playbook -vv praha.yml 
+
+
