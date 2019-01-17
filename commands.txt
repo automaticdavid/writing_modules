@@ -11,7 +11,7 @@ vi lib/ansible/modules/cloud/hello/hello.sh
 
 # Module Test
 source hacking/env-setup
-hacking/test-module -m ./lib/ansible/modules/cloud/hello/hello.sh  -a 'msg=foo bar'
+hacking/test-module -m ./lib/ansible/modules/cloud/hello/hello.sh  -a 'msg=foobar'
 hacking/test-module -m ./lib/ansible/modules/cloud/hello/hello.sh  
 
 # Playbook Test
